@@ -1,0 +1,23 @@
+# Core dependencies
+anthropic>=0.40.0
+click>=8.1.0
+rich>=13.0.0
+chromadb>=0.5.0
+cryptography>=42.0.0
+keyring>=25.0.0
+RestrictedPython>=7.0
+python-dotenv>=1.0.0
+
+# Optional LLM providers
+openai>=1.0.0
+ollama>=0.1.0
+
+# WhatsApp integration (optional)
+# whatsapp-business-sdk>=0.1.0  # Uncomment if using WhatsApp
+
+# Development tools
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+black>=24.0.0
+mypy>=1.8.0
+ruff>=0.2.0
