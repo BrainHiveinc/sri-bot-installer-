@@ -217,21 +217,6 @@ cat logs/violations.jsonl
 - ✅ SOC 2 aligned controls
 - ✅ Enterprise audit trails
 
----
-
-## 🆚 vs OpenClaw
-
-| Feature | This Agent | OpenClaw |
-|---------|------------|----------|
-| **Setup** | One command | Multiple steps |
-| **Cost** | FREE (with Ollama) | API costs |
-| **Privacy** | 100% local option | Cloud-based |
-| **WhatsApp** | Personal account | Not available |
-| **Guardrails** | Built-in | Not mentioned |
-| **Compliance** | Audit logs | Unknown |
-| **Code Protection** | Encrypted plugins | Not mentioned |
-
----
 
 ## 🔧 Advanced Configuration
 
