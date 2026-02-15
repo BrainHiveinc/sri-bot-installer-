@@ -1,15 +1,10 @@
 #!/usr/bin/env python3
 # Agent Sri - Protected Version
 # Copyright (c) 2026 BrainHive Inc. All rights reserved.
+# Free to use
 
 import sys
 import os
-sys.path.insert(0, os.path.dirname(__file__))
-
-# License validation
-from license_validator import validate_license
-if not validate_license():
-    sys.exit(1)
 
 # Load actual agent code
 import base64
