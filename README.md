@@ -151,27 +151,6 @@ Full list: See [POLICIES.md](POLICIES.md)
 
 ---
 
-## 🏗️ Architecture
-
-```
-sri-agent/
-├── simple_agent.py          # Main agent (with guardrails!)
-├── agent/
-│   ├── core/                # Orchestrator, decision engine
-│   ├── llm/                 # Multi-LLM providers
-│   ├── memory/              # Vector store (ChromaDB)
-│   ├── filesystem/          # Project scanner
-│   ├── messaging/           # WhatsApp bridge
-│   └── policies/            # 🛡️ Guardrails system (NEW!)
-│       ├── guardrails.py    # Content safety, risk assessment
-│       └── config.json      # Policy configuration
-├── whatsapp-personal/       # WhatsApp integration
-├── logs/                    # Audit & violation logs
-├── install.sh               # Master installer
-└── POLICIES.md              # Business policies documentation
-```
-
----
 
 ## 📚 Documentation
 
