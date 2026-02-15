@@ -152,18 +152,6 @@ Full list: See [POLICIES.md](POLICIES.md)
 ---
 
 
-## 📚 Documentation
-
-| Document | Description |
-|----------|-------------|
-| **[QUICK_START.md](QUICK_START.md)** | 2-minute setup guide |
-| **[POLICIES.md](POLICIES.md)** | Business guardrails & compliance |
-| **[USER_GUIDE.md](USER_GUIDE.md)** | Complete user manual |
-| **[INSTALL.md](INSTALL.md)** | Detailed installation |
-| **[AGENT_ARCHITECTURE.md](AGENT_ARCHITECTURE.md)** | Technical design |
-
----
-
 ## 🔐 Security & Compliance
 
 ### Audit Logging
@@ -229,7 +217,7 @@ LLM_MODEL=llama3.1
 
 ---
 
-## 🆘 Support
+
 
 ### Troubleshooting
 
@@ -253,8 +241,7 @@ A: Check `logs/violations.jsonl` for reason. May need to rephrase in business co
 **Q: WhatsApp not connecting?**
 A: Restart with `./start_whatsapp.sh` and scan QR code again.
 
-**Q: How to disable guardrails?**
-A: Not recommended for business use. For development, set `strict_mode: false` in config.
+
 
 ---
 
@@ -277,13 +264,7 @@ A: Not recommended for business use. For development, set `strict_mode: false` i
 
 MIT License - See LICENSE file
 
----
 
-## 🙏 Credits
-
-Inspired by [OpenClaw](https://openclaw.ai/)
-
----
 
 ## 🎉 Get Started!
 
@@ -301,4 +282,5 @@ python3 simple_agent.py --interactive
 python3 test_guardrails.py
 ```
 
-**Safe, compliant, and ready for business! 🚀**
+**Safe, compliant, and ready for business contact- brainhiveinc@gmail.com
+! 🚀**
