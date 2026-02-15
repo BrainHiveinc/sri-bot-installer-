@@ -33,10 +33,14 @@ Fast, secure, and compliant AI assistant that connects to WhatsApp, learns from 
 ## 🚀 Quick Start
 
 ### Linux/Mac Installation
+# Download the installer
+curl -o install.sh https://raw.githubusercontent.com/BrainHiveinc/sri-bot-installer-/main/install.sh
 
-```bash
-curl -sSL https://raw.githubusercontent.com/BrainHiveinc/sri-bot/main/install.sh | bash -s both
-```
+# Make it executable
+chmod +x install.sh
+
+# Run it
+./install.sh
 
 Or download and run locally:
 ```bash
@@ -44,6 +48,8 @@ Or download and run locally:
 ```
 
 ### Windows Installation
+curl -o install.ps1 https://raw.githubusercontent.com/BrainHiveinc/sri-bot-installer-/main/install-windows.ps1
+powershell -ExecutionPolicy Bypass -File install.ps1
 
 **Option 1: PowerShell (Recommended)**
 ```powershell
