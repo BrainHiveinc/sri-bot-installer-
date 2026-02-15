@@ -157,11 +157,12 @@ def read_file(file_path):
 def get_ollama_response(message, context="", learned_info=""):
     """Get response from Ollama"""
     try:
+        context_part = f"Previous conversation context:\n{context}\n" if context else ""
+        learned_part = f"Learned knowledge:\n{learned_info}\n" if learned_info else ""
+
         prompt = f"""You are Agent Sri, an intelligent AI assistant.
 
-{f'Previous conversation context:\\n{context}\\n' if context else ''}
-{f'Learned knowledge:\\n{learned_info}\\n' if learned_info else ''}
-
+{context_part}{learned_part}
 User: {message}
 
 Agent Sri:"""
