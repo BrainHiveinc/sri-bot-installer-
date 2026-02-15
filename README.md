@@ -33,17 +33,14 @@ Fast, secure, and compliant AI assistant that connects to WhatsApp, learns from 
 ## 🚀 Quick Start
 
 ### Linux/Mac Installation
-
-```bash
-curl -sSL https://raw.githubusercontent.com/BrainHiveinc/sri-bot/main/install.sh | bash -s both
-```
-
-Or download and run locally:
-```bash
-./install.sh
-```
+# Download the installer
+1- curl -o install.sh https://raw.githubusercontent.com/BrainHiveinc/sri-bot-installer-/main/install.sh
+2- chmod +x install.sh
+3- ./install.sh
 
 ### Windows Installation
+curl -o install.ps1 https://raw.githubusercontent.com/BrainHiveinc/sri-bot-installer-/main/install-windows.ps1
+powershell -ExecutionPolicy Bypass -File install.ps1
 
 **Option 1: PowerShell (Recommended)**
 ```powershell
@@ -151,39 +148,6 @@ Full list: See [POLICIES.md](POLICIES.md)
 
 ---
 
-## 🏗️ Architecture
-
-```
-sri-agent/
-├── simple_agent.py          # Main agent (with guardrails!)
-├── agent/
-│   ├── core/                # Orchestrator, decision engine
-│   ├── llm/                 # Multi-LLM providers
-│   ├── memory/              # Vector store (ChromaDB)
-│   ├── filesystem/          # Project scanner
-│   ├── messaging/           # WhatsApp bridge
-│   └── policies/            # 🛡️ Guardrails system (NEW!)
-│       ├── guardrails.py    # Content safety, risk assessment
-│       └── config.json      # Policy configuration
-├── whatsapp-personal/       # WhatsApp integration
-├── logs/                    # Audit & violation logs
-├── install.sh               # Master installer
-└── POLICIES.md              # Business policies documentation
-```
-
----
-
-## 📚 Documentation
-
-| Document | Description |
-|----------|-------------|
-| **[QUICK_START.md](QUICK_START.md)** | 2-minute setup guide |
-| **[POLICIES.md](POLICIES.md)** | Business guardrails & compliance |
-| **[USER_GUIDE.md](USER_GUIDE.md)** | Complete user manual |
-| **[INSTALL.md](INSTALL.md)** | Detailed installation |
-| **[AGENT_ARCHITECTURE.md](AGENT_ARCHITECTURE.md)** | Technical design |
-
----
 
 ## 🔐 Security & Compliance
 
@@ -217,21 +181,6 @@ cat logs/violations.jsonl
 - ✅ SOC 2 aligned controls
 - ✅ Enterprise audit trails
 
----
-
-## 🆚 vs OpenClaw
-
-| Feature | This Agent | OpenClaw |
-|---------|------------|----------|
-| **Setup** | One command | Multiple steps |
-| **Cost** | FREE (with Ollama) | API costs |
-| **Privacy** | 100% local option | Cloud-based |
-| **WhatsApp** | Personal account | Not available |
-| **Guardrails** | Built-in | Not mentioned |
-| **Compliance** | Audit logs | Unknown |
-| **Code Protection** | Encrypted plugins | Not mentioned |
-
----
 
 ## 🔧 Advanced Configuration
 
@@ -265,7 +214,7 @@ LLM_MODEL=llama3.1
 
 ---
 
-## 🆘 Support
+
 
 ### Troubleshooting
 
@@ -289,8 +238,7 @@ A: Check `logs/violations.jsonl` for reason. May need to rephrase in business co
 **Q: WhatsApp not connecting?**
 A: Restart with `./start_whatsapp.sh` and scan QR code again.
 
-**Q: How to disable guardrails?**
-A: Not recommended for business use. For development, set `strict_mode: false` in config.
+
 
 ---
 
@@ -313,13 +261,7 @@ A: Not recommended for business use. For development, set `strict_mode: false` i
 
 MIT License - See LICENSE file
 
----
 
-## 🙏 Credits
-
-Inspired by [OpenClaw](https://openclaw.ai/)
-
----
 
 ## 🎉 Get Started!
 
@@ -337,4 +279,5 @@ python3 simple_agent.py --interactive
 python3 test_guardrails.py
 ```
 
-**Safe, compliant, and ready for business! 🚀**
+**Safe, compliant, and ready for business contact- brainhiveinc@gmail.com
+! 🚀**
