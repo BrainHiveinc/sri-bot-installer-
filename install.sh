@@ -28,6 +28,20 @@ read -p "Bot name (default: Agent Sri): " BOT_NAME
 BOT_NAME=${BOT_NAME:-"Agent Sri"}
 
 echo ""
+echo "Platform:"
+echo "1) Telegram"
+echo "2) WhatsApp"
+echo "3) Both"
+read -p "Choice (1-3): " PLATFORM_CHOICE
+
+case "$PLATFORM_CHOICE" in
+    1) INSTALL_TG=true; INSTALL_WA=false ;;
+    2) INSTALL_TG=false; INSTALL_WA=true ;;
+    3) INSTALL_TG=true; INSTALL_WA=true ;;
+    *) INSTALL_TG=true; INSTALL_WA=false ;;
+esac
+
+echo ""
 echo "AI Model:"
 echo "1) Ollama (FREE)"
 echo "2) OpenAI"
@@ -48,8 +62,7 @@ echo ""
 
 # Setup directory
 INSTALL_DIR="$HOME/agent-sri"
-TG_DIR="$INSTALL_DIR/telegram-personal"
-mkdir -p "$TG_DIR"
+mkdir -p "$INSTALL_DIR"
 
 echo "Installing to: $INSTALL_DIR"
 echo ""
@@ -57,36 +70,73 @@ echo ""
 # Download files from PUBLIC repo
 BASE_URL="https://raw.githubusercontent.com/BrainHiveinc/sri-bot-installer-/main"
 
-echo "Downloading files..."
-curl -sSL "$BASE_URL/agent_cli_protected.py" -o "$TG_DIR/agent_cli_protected.py"
-curl -sSL "$BASE_URL/bot-protected.js" -o "$TG_DIR/bot-protected.js"
-curl -sSL "$BASE_URL/license_validator.py" -o "$TG_DIR/license_validator.py"
-curl -sSL "$BASE_URL/requirements.txt" -o "$TG_DIR/requirements.txt"
+# Install Telegram
+if [ "$INSTALL_TG" = true ]; then
+    echo "Setting up Telegram..."
+    TG_DIR="$INSTALL_DIR/telegram-personal"
+    mkdir -p "$TG_DIR"
 
-# Install dependencies
-echo ""
-echo "Installing dependencies..."
-cd "$TG_DIR"
-pip3 install -r requirements.txt --break-system-packages 2>/dev/null || pip3 install -r requirements.txt
-npm init -y > /dev/null 2>&1
-npm install telegraf dotenv
+    curl -sSL "$BASE_URL/agent_cli_protected.py" -o "$TG_DIR/agent_cli_protected.py"
+    curl -sSL "$BASE_URL/bot-protected.js" -o "$TG_DIR/bot-protected.js"
+    curl -sSL "$BASE_URL/license_validator.py" -o "$TG_DIR/license_validator.py"
+    curl -sSL "$BASE_URL/requirements.txt" -o "$TG_DIR/requirements.txt"
 
-# Create .env
-cat > "$TG_DIR/.env" << EOF
+    cd "$TG_DIR"
+    pip3 install -r requirements.txt --break-system-packages 2>/dev/null || pip3 install -r requirements.txt
+    npm init -y > /dev/null 2>&1
+    npm install telegraf dotenv
+
+    cat > "$TG_DIR/.env" << EOF
 BOT_TOKEN=YOUR_BOT_TOKEN_HERE
 BOT_NAME=$BOT_NAME
 LLM_PROVIDER=$LLM
 LLM_MODEL=$MODEL
 EOF
+    echo "✅ Telegram setup complete"
+fi
+
+# Install WhatsApp
+if [ "$INSTALL_WA" = true ]; then
+    echo ""
+    echo "Setting up WhatsApp..."
+    WA_DIR="$INSTALL_DIR/whatsapp-personal"
+    mkdir -p "$WA_DIR"
+
+    curl -sSL "$BASE_URL/agent_cli_protected.py" -o "$WA_DIR/agent_cli_protected.py"
+    curl -sSL "$BASE_URL/whatsapp-bot.js" -o "$WA_DIR/whatsapp-bot.js"
+    curl -sSL "$BASE_URL/license_validator.py" -o "$WA_DIR/license_validator.py"
+    curl -sSL "$BASE_URL/requirements.txt" -o "$WA_DIR/requirements.txt"
+
+    cd "$WA_DIR"
+    pip3 install -r requirements.txt --break-system-packages 2>/dev/null || pip3 install -r requirements.txt
+    npm init -y > /dev/null 2>&1
+    npm install whatsapp-web.js qrcode-terminal
+
+    echo "✅ WhatsApp setup complete"
+fi
 
 echo ""
 echo "╔══════════════════════════════════════════════════════════════╗"
 echo "║                Installation Complete!                        ║"
 echo "╚══════════════════════════════════════════════════════════════╝"
 echo ""
-echo "Next steps:"
-echo "1. Get bot token from @BotFather on Telegram"
-echo "2. Edit: $TG_DIR/.env"
-echo "3. Replace YOUR_BOT_TOKEN_HERE with your token"
-echo "4. Run: cd $TG_DIR && node bot-protected.js"
+
+if [ "$INSTALL_TG" = true ]; then
+    echo "📱 Telegram Bot:"
+    echo "1. Get token from @BotFather"
+    echo "2. Edit: $TG_DIR/.env"
+    echo "3. Replace YOUR_BOT_TOKEN_HERE"
+    echo "4. Run: cd $TG_DIR && node bot-protected.js"
+    echo ""
+fi
+
+if [ "$INSTALL_WA" = true ]; then
+    echo "💬 WhatsApp Bot:"
+    echo "1. Run: cd $WA_DIR && node whatsapp-bot.js"
+    echo "2. Scan QR code with WhatsApp"
+    echo "3. Start chatting!"
+    echo ""
+fi
+
+echo "Installed to: $INSTALL_DIR"
 echo ""
